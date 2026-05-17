@@ -1,20 +1,69 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+/* =========================================================
+   Design tokens — light & dark
+   ========================================================= */
+:root {
+  --bg: #f6f7fb;
+  --bg-elev: #ffffff;
+  --surface: #ffffff;
+  --border: #e3e7ef;
+  --border-strong: #d4d9e4;
+  --text: #0f172a;
+  --text-muted: #5b6478;
+  --text-subtle: #8a93a6;
+  --brand: #6366f1;
+  --brand-hover: #4f46e5;
+  --brand-soft: #eef2ff;
+  --brand-text: #4338ca;
+  --accent: #ec4899;
+  --success: #10b981;
+  --success-soft: #d1fae5;
+  --danger: #ef4444;
+  --danger-soft: #fee2e2;
+  --warning: #f59e0b;
+  --warning-soft: #fef3c7;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, .05);
+  --shadow: 0 6px 18px rgba(15, 23, 42, .06);
+  --shadow-lg: 0 18px 40px rgba(15, 23, 42, .10);
+  --radius: 14px;
+  --radius-sm: 10px;
+}
+[data-theme="dark"] {
+  --bg: #0b1020;
+  --bg-elev: #131a35;
+  --surface: #171f3a;
+  --border: #242c4d;
+  --border-strong: #2f3a6b;
+  --text: #e6eaf6;
+  --text-muted: #9ea7c2;
+  --text-subtle: #7080a3;
+  --brand: #818cf8;
+  --brand-hover: #a5b4fc;
+  --brand-soft: #1e1f4d;
+  --brand-text: #c7d2fe;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35);
+  --shadow: 0 6px 18px rgba(0, 0, 0, .4);
+  --shadow-lg: 0 18px 40px rgba(0, 0, 0, .5);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  transition: background-color .25s ease, color .25s ease;
 }
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-hover); }
+img { display: block; max-width: 100%; }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Dark-mode tweaks for react-image-gallery */
+[data-theme="dark"] .image-gallery-thumbnail { border-color: transparent; }
+[data-theme="dark"] .image-gallery-thumbnail.active,
+[data-theme="dark"] .image-gallery-thumbnail:hover,
+[data-theme="dark"] .image-gallery-thumbnail:focus {
+  border-color: var(--brand);
 }
-.image-gallery-thumbnails-wrapper{
-  display: none;
-}
-
-.image-gallery-image{
-  max-height: 100vh !important;
-}
+.image-gallery-svg { color: white; }
+.image-gallery-image { max-height: 70vh !important; object-fit: contain; }

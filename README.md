@@ -1,48 +1,41 @@
 # Photo Gallery
 
-A React photo gallery app that fetches images recursively from a GitLab repository and renders them with thumbnail browsing and lazy loading.
+A React photo gallery that works out-of-the-box with **Lorem Picsum** (no setup), and can also browse images from any **GitLab repository** when you supply a project path and an optional access token.
 
 ## Features
 
-- Fetches image files from a GitLab repository via the GitLab REST API
-- Recursive directory traversal to collect all images
-- Smooth gallery view with thumbnails using `react-image-gallery`
-- Lazy loading for performance
-- Personal access token support for private GitLab repos
+- **Two sources** — Lorem Picsum (zero-config) and GitLab (recursive image walk through any repo).
+- **Switch sources** from the navbar; your config (project path, token, theme) persists in `localStorage`.
+- **Token handling** — your GitLab Personal Access Token never leaves the browser. No server, no logging.
+- **Light/dark theme** — sun/moon toggle, respects OS preference on first load.
+- **Loading skeleton**, **error state with retry**, and **empty state** — never a blank screen.
+- **Lazy loading** + thumbnails via [`react-image-gallery`](https://github.com/xiaolin/react-image-gallery).
 
 ## Tech Stack
 
-- **Framework:** React 18
-- **HTTP Client:** Axios
-- **Gallery:** react-image-gallery
+- React 18
+- axios
+- react-image-gallery
 
 ## Getting Started
-
-### Prerequisites
-
-- Node.js >= 14
-- GitLab personal access token (for private repos)
-
-### Installation
 
 ```bash
 git clone https://github.com/amanshakya2001/photo-gallery-project.git
 cd photo-gallery-project
 npm install
-```
-
-### Configuration
-
-Update the GitLab API config in the source with your:
-- GitLab project ID
-- Personal access token
-- Branch name
-
-### Running
-
-```bash
 npm start
 ```
+
+Open [http://localhost:3000](http://localhost:3000). The Picsum source loads automatically.
+
+## Using the GitLab source
+
+1. Click **GitLab** in the navbar.
+2. Enter the project path (e.g. `your-username/your-repo`) and a branch.
+3. For public repos, leave the token blank. For private repos, paste a Personal Access Token with the `read_api` scope. Create one at *gitlab.com → User Settings → Access Tokens*.
+4. Click **Load photos**.
+
+> Tokens are stored in your browser's `localStorage` and are only ever sent to `gitlab.com`. Never paste a token into anything you don't trust.
 
 ## License
 
